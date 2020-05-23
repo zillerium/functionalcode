@@ -1,0 +1,19 @@
+-module(solution).
+-export([main/0]).
+
+
+
+main() ->
+    {N, _} = string:to_integer(string:chomp(io:get_line(""))),
+    %ok.
+    % Print "Hello World" on a new line 'n' times.
+    %io:fwrite("testing").
+    lists:foreach(
+    fun(_) ->
+    io:format("Hello World~n")
+    end, lists:seq(1, N)).
+    %"testing".   
+    % loop(N) ->
+    % do something
+    %    io:fwrite("Hello World\n"),
+    %    loop(N-1)
