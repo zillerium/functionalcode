@@ -1,0 +1,17 @@
+#lang racket
+; Enter your code here. Read input from STDIN. Print output to STDOUT
+(define n (read-line (current-input-port) 'any))
+;(display "\n")
+;(display n)
+;(display "\n")
+;(char->integer (string-ref n (- (string-length n) 1)))
+(define m (string->number n))
+;(if (number? m)
+;    (display "n equals 10\n") (display "false"))
+;(display "\n")
+;(display n)
+;(display "\n")
+(for ([i m])
+ ; (display i)
+ ;/ (display "\n")
+  (display "Hello World\n"))
