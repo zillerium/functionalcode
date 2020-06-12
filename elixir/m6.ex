@@ -1,4 +1,6 @@
-new_printer = fn(initial_string) ->
+new_printer = fn
+  ("") -> IO.puts("__NOVAL__") 
+  (initial_string) ->
   initial_string |>
   String.reverse |>
   IO.puts
@@ -19,7 +21,7 @@ new_printer3 = &(
 )
 
 ["hello", "trevor", "john"]
-Enum.each ["hello", "trevor", "john"], new_printer
+Enum.each ["hello", "trevor", "", "john"], new_printer
 Enum.each ["hello2", "trevor2", "john2"], new_printer
 Enum.each ["==hello3", "==trevor3", "==john3"], new_printer3
 Enum.each ["harry", "james", "eagle"], fn(s) -> IO.puts(s) end
