@@ -1,9 +1,32 @@
+
 defmodule Demo do
   require Map
   def update do
     newmap = %{ map() | title: "other", year: 2018}
     newmap
   end
+
+  def read_pair(map_pr) do
+    case IO.read(:stdio, :line) do
+      :eof -> :ok
+      {:error, reason} -> IO.puts "Error: #{reason}"
+      data ->
+      ##line is pair or a count
+      ##g = data * 3
+      [ k | [v | _tail ]] = Tuple.to_list(Integer.parse(data))
+      Map.put(map_pr, k, v)
+    end
+  end
+
+  def create_map(map_pr, 0) do
+
+
+  end
+  def create_map(map_pr, count) do
+      create_map(read_pair(map_pr), count-1)
+  end
+
+
 
   def pattern_matching do
     #%{ title: my_title } = map()
