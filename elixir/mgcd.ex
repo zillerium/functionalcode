@@ -1,11 +1,4 @@
 defmodule Solution do
-  def get_int do
-    IO.read(:line)
-    |> String.trim()
-    |> String.to_integer
-
-
-  end
   #
   def stop, do: 10
 
