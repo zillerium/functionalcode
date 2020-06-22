@@ -1,46 +1,50 @@
 defmodule Solution do
-  #
-  def stop, do: 10
 
-  def calc_area([],list), do: 0
 
-  def calc_area(_rest1,list) do
-    [[x1, y1]|rest]=list
-    [x2, y2] = hd rest
-    dist = (x1*y2 - y1*x2)
-  ##  IO.puts "x1 - #{x1} #{y1} #{x2} #{y2} #{dist}"
-    dist
-  end
 
-  def solve(list, acc\\0, count\\0)
+    def split_test(list) do
+    #  IO.inspect list
+      g1 = hd list
+      g2 = hd tl list
+      get_value(g1, g2)
 
-  def solve(list, acc, count) when length(list)==0 do
-      abs(acc)/2
-  end
+    end
 
-  def solve1([first|rest]) do
-      solve([first]++rest++[first],  0, 1)
-  end
+    def calc_gcd(n, d, 0) do
+      d
+    end
 
-  def solve(list, acc, count) do
+    def calc_gcd(n,d, r ) do
+        if rem(n,d) == 0 do
+          calc_gcd(n, d, 0)
+        else
+          calc_gcd(d, rem(n, d), 1 )
+        end
 
-     ## IO.inspect list
-      rest = tl list
-      dist = calc_area(rest, list)
-    ##  IO.puts "tot -   #{acc} #{dist}"
-      if count>10 do stop end
-      solve(rest, acc+dist, count+1)
+    end
+
+    def get_value(g1, g2) when (g1==g2) do
+      g1
+    end
+
+    def get_value(g1, g2) when (g1>g2) do
+      calc_gcd(g1, g2, 1)
+    end
+
+    def get_value(g1, g2) when (g2>g1) do
+      calc_gcd(g2, g1, 1)
     end
 
     def test_data() do
 
-      1..get_int()
-      |>  Enum.map(fn _ -> IO.read(:line) end)
-       |> Enum.map(&String.split/1)
-       |> Enum.map( fn [l, r] -> [l,r] |> Enum.map(&String.to_integer/1) end)
-       |> solve1
+    IO.read(:line)
+       |> String.trim()
+       |> String.split()
+      # |> String.to_integer
+        |> Enum.map(&String.to_integer/1)
+        |> split_test()
       # |> Enum.map(&String.to_integer/1)
-        |> IO.puts
+        |> IO.inspect
 
     end
 
